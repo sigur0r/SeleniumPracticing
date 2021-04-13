@@ -15,9 +15,13 @@ class ProductPage(BasePage):
 
 
     def right_item_added(self):
-        # проверка что в корзину добавлен правильный товар
-        assert True
+        # item_name = self.browser.find_element(By.CLASS_NAME, "product_main").text  нужно разобраться как реализовать этот способ нормально
+        page_item_name = "The shellcoder's handbook был добавлен в вашу корзину."
+        checkout_item_name = self.browser.find_element(By.CLASS_NAME, "alertinner ").text # проверка что в корзину добавлен правильный товар
+        assert page_item_name == checkout_item_name
 
     def according_price(self):
-        # проверка что цена в корзине соответствующая
-        assert True
+        #item_price = self.browser.find_element(By.CLASS_NAME, "col-sm-2") # проверка что в корзину добавлен правильный товар
+        product_price = "Стоимость корзины теперь составляет 9,99 £"
+        checkout_price = self.browser.find_element(By.CLASS_NAME, "alert-info")
+        assert checkout_price == product_price
